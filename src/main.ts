@@ -9,17 +9,27 @@ import {
 
 import type { EditorView } from 'codemirror';
 
+import exampleLang from "./lang.example?raw"
+import exampleJs from "./js.example?raw"
+
 
 let LANGUAGES: { [language_id: string]: LanguageSupport; } = {
   "lang": lang(),
   "javascript": javascript()
 }
 
+let SAMPLE_FILES: { [language_id: string]: string; } = {
+  "lang": exampleLang,
+  "javascript": exampleJs
+}
+
 let language = new Compartment;
+let defaultLang = "lang"
 
 globalThis.editor = setupEditor(document.getElementById('editor')!, {
+  doc: SAMPLE_FILES[defaultLang],
   extensions: [
-    language.of(LANGUAGES["lang"])
+    language.of(LANGUAGES[defaultLang])
   ]
 });
 
