@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "grammar:lang": "lezer-generator src/lang/lang.grammar -o src/lang/parser.mjs",
-    "preview": "vite preview"
+    "dev": "vite & npm run grammar:lang:dev",
+    "build": "npm run grammar-build && tsc && vite build",
+    "grammar:build": "npm run grammar:lang:build",
+    "grammar:lang:build": "lezer-generator src/lang/lang.grammar -o src/lang/parser.mjs",
+    "grammar:lang:dev": "node --watch-path src/lang/lang.grammar node_modules/.bin/lezer-generator src/lang/lang.grammar -o src/lang/parser.mjs"
   },
   "devDependencies": {
     "@lezer/generator": "^1.8.0",
