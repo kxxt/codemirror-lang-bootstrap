@@ -43,14 +43,18 @@ for (const languageId in LANGUAGES) {
 }
 languageSelect.addEventListener("change", (ev) => {
   let select = ev.target as HTMLSelectElement;
-  setLanguage(select.options[select.selectedIndex].value)
+  let targetLang = select.options[select.selectedIndex].value
+  let updateDoc = (document.getElementById("update-doc") as HTMLInputElement).checked ? {
+    from: 0,
+    to: editor.state.doc.length,
+    insert: SAMPLE_FILES[targetLang]
+  } : undefined;
+  editor.dispatch({
+    changes: updateDoc,
+    effects: language.reconfigure(LANGUAGES[targetLang])
+  })
 })
 
-function setLanguage(lang: string) {
-  editor.dispatch({
-    effects: language.reconfigure(LANGUAGES[lang])
-  })
-}
 
 declare global {
   var editor: EditorView
