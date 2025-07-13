@@ -8,3 +8,5 @@
   Number { $[0-9]+ }
   String { '"' !["]* '"' }
 }
+
+@external propSource langHighlight from "./highlight"

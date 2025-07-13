@@ -1,21 +1,17 @@
 import './style.css'
 import { setupEditor } from './editor.ts'
+import { lang } from './lang'
 import { javascript } from "@codemirror/lang-javascript"
 import { Compartment } from "@codemirror/state"
-import type { EditorView } from 'codemirror';
 import {
   LanguageSupport,
-  LRLanguage,
 } from '@codemirror/language'
-import { parser } from './parser.mjs'
 
-let lang = new LanguageSupport(LRLanguage.define({
-  name: 'lang',
-  parser: parser
-}));
+import type { EditorView } from 'codemirror';
+
 
 let LANGUAGES: { [language_id: string]: LanguageSupport; } = {
-  "lang": lang,
+  "lang": lang(),
   "javascript": javascript()
 }
 
@@ -23,7 +19,7 @@ let language = new Compartment;
 
 globalThis.editor = setupEditor(document.getElementById('editor')!, {
   extensions: [
-    language.of(lang)
+    language.of(LANGUAGES["lang"])
   ]
 });
 
