@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "grammar": "lezer-generator src/lang.grammar -o src/parser.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
