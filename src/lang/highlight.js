@@ -4,4 +4,6 @@ export const langHighlight = styleTags({
     "Identifier": tags.variableName,
     "Number": tags.number,
     "String": tags.string,
+    "Raw": tags.literal,
+    "Comment": tags.comment
 })

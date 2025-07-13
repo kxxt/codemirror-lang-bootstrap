@@ -11,6 +11,8 @@ export const LangHighlightSytle = HighlightStyle.define([
     { tag: tags.variableName, color: "purple" },
     { tag: tags.number, textDecoration: 'underline', fontWeight: 'bold', color: "red" },
     { tag: tags.string, fontWeight: 'bold', color: "orange" },
+    { tag: tags.literal, fontWeight: 'bold', color: "green" },
+    { tag: tags.comment, color: "green" },
 ])
 
 export function lang(): LanguageSupport {
