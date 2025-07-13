@@ -5,3 +5,4 @@ for CodeMirror editor.
 
 To get started, run `npm run dev` after `npm i`.
 
+![Screenshot](./images/Screenshot.png)
